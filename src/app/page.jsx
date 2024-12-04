@@ -111,14 +111,7 @@ function MainComponent() {
     setLoading(true);
 
     try {
-      const apiKey = process.env.OPENAI_API_KEY; // Access env variable
-      if (!apiKey) {
-          console.error("Missing API key!");
-          return; // Or handle the error appropriately
-      }
-      const apiUrl = `/integrations/chat-gpt/conversationgpt4?apiKey=${apiKey}`; // Construct URL
-
-      const response = await fetch(apiUrl, {
+      const response = await fetch("/integrations/chat-gpt/conversationgpt4", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
